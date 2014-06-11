@@ -1,95 +1,377 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Git!</title>
+    <title>Git!</title>
 
-		<meta name="description" content="">
-		<meta name="author" content="Dan Schuman">
+    <meta name="description" content="">
+    <meta name="author" content="Dan Schuman">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-		<script>
-			if( window.location.search.match( /print-pdf/gi ) ) {
-				var link = document.createElement( 'link' );
-				link.rel = 'stylesheet';
-				link.type = 'text/css';
-				link.href = 'css/print/pdf.css';
-				document.getElementsByTagName( 'head' )[0].appendChild( link );
-			}
-		</script>
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
 
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
  
-	<body>
+  <body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
 
-				<section>
-					<h1>Heading 1</h1>
-					<h2>Heading 2</h2> 
-					<h3>HTML Presentations Made Easy</h3>
-					<h4>Woah</h4>
-					<p>Uhhh</p>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+        <section>
+          <h1>Git!</h1>
+        </section>
 
-			</div>
+        <section>
+          <section>
+            <h2>Git is freaking awesome.</h2>
+            <ul>
+              <li class="fragment">Passive -- doesn't get in your way.</li>
+              <li class="fragment">
+                Insanely fast branching and commit switching.
+                <ul>
+                  <li>Code experimentation</li>
+                  <li>Fast code sharing</li>
+                  <li>Bug bisecting</li>
+                </ul>
+              </li>
+              <li class="fragment">Offline committing</li>
+              <li class="fragment">Partial file commits</li>
+              <li class="fragment">It doesn't cost <span class="fragment highlight-current-green">$25,000<span></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Lots of tools and services</h2>
+            <ul>
+              <li>Powerful command line</li>
+              <li>Variety of great GUI tools</li>
+              <li>GitHub and BitBucket</li>
+              <li class="fragment">Plenty of answers on StackOverflow</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Not many drawbacks</h2>
+            <ul>
+              <li>All functions of Perforce/SVN can be accomplished in Git</li>
+              <li>Extra disk space usage is well worth productivity gains</li>
+            </ul>
+          </section>
+        </section>
 
-		</div>
+        <section>
+          <section>
+            <h1>Git/Perforce Differences</h1>
+          </section>
+          
+          <section>
+            <h2>Perforce: Deltas</h2>
+            <p>
+              <img src="img/18333fig0104-tn.png">
+              <ul>
+                <li class="fragment">Stores commits as a series of changes</li>
+              </ul>
+            </p>
+          </section>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+          <section>
+            <h2>Git: Snapshots</h2>
+            <p>
+              <img src="img/18333fig0105-tn.png">
+              <ul>
+                <li class="fragment">Each commit is a snapshot of the entire tree</li>
+                <li class="fragment">Unchanged files are pointers</li>
+                <li class="fragment">Each version is like its own mini-filesystem</li>
+              </ul>
+            </p>
+          </section>
+        </section>
 
-		<script>
+        <section>
+            <h2>Setting up Git</h2>
+            <!-- <img src="http://mattfleming.com/files/images/terminal_icon.png"> -->
+            <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git config --global user.name "Dan Schuman"
+$ git config --global user.email "dschuman@extensis.com"
+            </code></pre>
+        </section>
 
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+        <section>
+          <h2>Creating a new repository</h2>
+          <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git init
+          </code></pre>
+        </section>
+        <section>
+          <section>
+            <h2>Adding and committing</h2>
+            <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git add [glob]
+$ git commit
+            </code></pre>
+          </section>
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+          <section>
+            <h3>Staging = Index = Cache</h3>
+            <p>All the same thing</p>
+          </section>
+        </section>
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
 
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
+        <section>
+          <h2>Common workflow</h2>
+          <ol>
+            <li class="fragment">Complete a <em><u>small</u></em> amount of work.</li>
+            <li class="fragment">Stage your changes.</li>
+            <li class="fragment">Commit.</li>
+            <li class="fragment">Step 2 &amp; 3 are usually combined.</li>
+          </ol>
+          <br/>
+          <p class="fragment">The more commits, the better!</p>
+        </section>
 
-		</script>
+        <section>
+          <section>
+            <h2>Branching</h2>
+            <img style="max-height: 500px;" src="http://nvie.com/img/2009/12/Screen-shot-2009-12-24-at-11.32.03.png" />
+          </section>      
+          <section>
+            <h2>WHY?!</h2>
+            <img style="max-height: 200px;" src="img/why.png" />
+            <ul>
+              <li class="fragment">Allows for independent, concurrent work. <small style="vertical-align: middle;" class="fragment">(No more waiting for code reviews)</small></li>
+              <li class="fragment">Quickly switch branches to a stable version to apply hotfixes.</li>
+              <li class="fragment">Better organization of features in progress.</li>
+            </ul>
+          </section>            
+          <section>
+            <h2>Branches</h2>
+            <p class="fragment">Branches are fast and disposable.</p>
+            <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git branch testing
+            </code></pre>
+            <img class="fragment roll-in" src="img/gitstuff/branches1.png">
+            <p class="fragment"><small>(Any new commits will still stem from <b>master</b>)</small></p>
+          </section>          
+          <section>
+            <h2>Checking out</h2>
+            <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git checkout testing
+            </code></pre>
+            <img class="fragment roll-in" src="img/gitstuff/branches2.png">
+            <div class="fragment">
+              <p>Branch and checkout combined:</p>
+              <pre class="bash roll-in"><code data-trim contenteditable>
+$ git checkout -b testing
+            </code></pre>
+            </div>
+          </section>
+          <section>
+            <h2>Committing to testing</h2>
+            <div class="fragment">
+              <pre class="bash roll-in"><code data-trim contenteditable>
+$ git commit -am 'Commit to testing'
+              </code></pre>
+              <img src="img/gitstuff/branches3.png">  
+            </div>
+          </section>
+          <section>
+            <h2>Back to master</h2>
+            <div class="fragment">
+              <pre class="bash"><code data-trim contenteditable>
+$ git checkout master
+              </code></pre>
+              <img src="img/gitstuff/branches4.png">  
+            </div>            
+          </section>
 
-	</body>
+          <section>
+            <h2>Commit to master</h2>
+            <div class="fragment">
+              <pre class="bash"><code data-trim contenteditable>
+$ git commit -am 'Commit to master'
+              </code></pre>
+              <img src="img/gitstuff/branches5.png">
+            </div>
+          </section>
+
+          <section>
+            <h2>Merge</h2>
+            <div class="fragment">
+              <pre class="bash"><code data-trim contenteditable>
+$ git merge testing
+              </code></pre>
+              <img src="img/gitstuff/branches6.png">  
+            </div>
+          </section>
+            
+          <section>
+            <h2>Another type of merge</h2>
+            <div class="fragment roll-in">
+              <img src="img/gitstuff/branch-ff-1.png">  
+            </div>
+          </section>
+
+          <section>
+            <h2>Checkout master</h2>
+            <div class="fragment">
+              <pre class="bash"><code data-trim contenteditable>
+$ git checkout master
+              </code></pre>
+              <img src="img/gitstuff/branch-ff-2.png">  
+            </div>
+          </section>
+
+          <section>
+            <h2>Merge</h2>
+            <div class="fragment roll-in">
+              <pre class="bash"><code data-trim contenteditable>
+$ git merge testing
+              </code></pre>
+            </div><div class="fragment roll-in" >
+              <img src="img/gitstuff/branch-ff-3.png">
+              <h3>Fast-forward Merge</h3>
+            </div>
+          </section>
+            
+        </section>
+
+        <section>
+          <h2>Tagging</h2>
+          <p class="fragment">
+            Marks a commit similar to a checkout, but cannot be moved.
+          </p>
+          <pre class="bash fragment roll-in"><code data-trim contenteditable>
+$ git tag tag_name
+          </code></pre>
+          <img class="fragment roll-in" src="img/tag.png" />
+        </section>
+
+        <section>
+          <img src="img/gitstuff/shipit.jpg">
+        </section>
+
+        <section>
+          <section>
+            <h2>Remote Repositories</h2>
+            <h3>Remotes, fetch, push &amp; pull!</h3>
+          </section>
+
+          <section>
+            <h2>Adding a remote</h2>
+            <pre><code class="bash" data-trim contenteditable>
+$ git remote add origin git@github.com:extensis/git-presentation.git
+            </code></pre>
+            <div class="fragment">
+              <h2>Pushing the changes</h2>
+              <pre><code class="bash" data-trim contenteditable>
+$ git push --set-upstream origin master
+              </code></pre>
+              <p class="fragment">
+                Changes are only shared when <code class="code">git push</code> is run
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2>Clone</h2>
+            <pre><code class="bash" data-trim contenteditable>
+$ git clone git@github.com:extensis/git-presentation.git [dir-name]
+            </code></pre>
+            <p>Copies the entire repository history, and adds default <code class="code">origin</code> remote.</p>
+          </section>          
+
+          <section>
+            <h2>Fetch</h2>
+            <pre><code class="bash" data-trim contenteditable>
+$ git fetch
+            </code></pre>
+            <p>Updates remotes without modifying local branches.</p>
+          </section>
+
+          <section>
+            <h2>Pull</h2>
+            <pre><code class="bash" data-trim contenteditable>
+$ git pull [remote/branch]
+            </code></pre>
+            <p>Will run a <code class="code">git fetch</code> followed by a <code class="code">git merge FETCH_HEAD</code>.</p>
+          </section>
+
+        </section>
+
+        <section>
+          <h2>Distributed Workfows</h2>
+          <p><img src="img/centr.png"></p>
+          <ul>
+            <li class="fragment">A "blessed" central repository.</li>
+            <li class="fragment">Sharing of feature branches before mainline commit.</li>
+            <li class="fragment">Specific branches for release channels.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Demos / Q&amp;A</h1>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: false,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+    console.log(Reveal.getQueryHash());
+    </script>
+
+  </body>
 </html>
